@@ -1,0 +1,1179 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/8/2024 11:37:24 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JC4EISO"
+  DTS:CreatorName="DESKTOP-JC4EISO\leidu"
+  DTS:DTSID="{D44CA286-7F48-439A-A1FB-6A36BB492793}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{5F5BF1A0-A224-4840-9938-435183AC9B84}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-JC4EISO.AdventureWorksDW2016]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E71A26C6-1B09-4F48-AC1F-50ACE1D9B78C}"
+      DTS:ObjectName="DESKTOP-JC4EISO.AdventureWorksDW2016">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-JC4EISO;Initial Catalog=AdventureWorksDW2016;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E71A26C6-1B09-4F48-AC1F-50ACE1D9B78C}DESKTOP-JC4EISO.AdventureWorksDW2016;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-JC4EISO.STREAMING]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A0B342B4-C148-4659-8565-A7673430FF93}"
+      DTS:ObjectName="DESKTOP-JC4EISO.STREAMING">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-JC4EISO;Initial Catalog=STREAMING;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{A0B342B4-C148-4659-8565-A7673430FF93}DESKTOP-JC4EISO.STREAMING;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga Producto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{F254DD54-4A71-41A3-89E2-3BB621BE8E92}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Producto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Producto\Carga Producto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Carga Producto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Producto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Producto\Carga Producto.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-JC4EISO.STREAMING]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-JC4EISO.STREAMING]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].Columns[EnglishProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EnglishProductName"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[EnglishProductName]"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishProductName]" />
+                    <inputColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Color]"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].Columns[EnglishDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="EnglishDescription"
+                      externalMetadataColumnId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[EnglishDescription]"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishDescription]" />
+                    <inputColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[ListPrice]"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[ListPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EnglishProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      name="EnglishDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Producto\Carga Producto.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Carga Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Producto\Carga Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Carga Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Producto\Carga Producto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Producto\Mezclar"
+              componentClassID="Microsoft.Merge"
+              contactInfo="Mezclar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina las filas de varios flujos de datos ordenados en un solo flujo de datos ordenados. A diferencia de la combinación de mezcla, todas las filas fluyen hacia la salida. Por ejemplo, se combinan dos listas ordenadas de clientes en una sola lista ordenada. Si el orden no es importante, use la transformación Unión de todo. "
+              name="Mezclar"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 1]"
+                  name="Entrada de Mezclar 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 1].Columns[EnglishProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EnglishProductName"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[EnglishProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 1].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 1].Columns[EnglishDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="EnglishDescription"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[EnglishDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 1].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 2]"
+                  name="Entrada de Mezclar 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 2].Columns[EnglishProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EnglishProductName"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishProductName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 2].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[Color]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 2].Columns[EnglishDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="EnglishDescription"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 2].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[ListPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1]"
+                  isSorted="true"
+                  name="Salida de Mezclar 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishProductName]"
+                      name="EnglishProductName"
+                      sortKeyPosition="1" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[EnglishDescription]"
+                      name="EnglishDescription" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1].Columns[ListPrice]"
+                      name="ListPrice" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Producto\Ordenar"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga Producto\Ordenar.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Producto\Ordenar.Inputs[Entrada de ordenación].Columns[EnglishProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EnglishProductName"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Ordenar.Inputs[Entrada de ordenación].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[Color]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Ordenar.Inputs[Entrada de ordenación].Columns[EnglishDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="EnglishDescription"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Producto\Ordenar.Inputs[Entrada de ordenación].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[ListPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[EnglishProductName]"
+                      name="EnglishProductName"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[Color]"
+                      name="Color">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[Color]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[EnglishDescription]"
+                      name="EnglishDescription">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación].Columns[ListPrice]"
+                      name="ListPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[ListPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Producto\Producto 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Producto 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT EnglishProductName,Color,EnglishDescription,ListPrice
+FROM DimProduct
+WHERE ListPrice IS NULL</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Producto\Producto 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-JC4EISO.AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-JC4EISO.AdventureWorksDW2016]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishProductName]"
+                      length="50"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]"
+                      name="EnglishProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishDescription]"
+                      length="400"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]"
+                      name="EnglishDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[ListPrice]"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EnglishProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      name="EnglishDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[EnglishProductName]"
+                      name="EnglishProductName" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[EnglishDescription]"
+                      name="EnglishDescription" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Producto\Producto 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Producto\Producto 2"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Producto 2"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT EnglishProductName,Color,EnglishDescription,ListPrice
+FROM DimProduct
+WHERE ListPrice IS NOT NULL
+order by EnglishProductName</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Producto\Producto 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-JC4EISO.AdventureWorksDW2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-JC4EISO.AdventureWorksDW2016]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishProductName]"
+                      length="50"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[EnglishProductName]"
+                      name="EnglishProductName"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishDescription]"
+                      length="400"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[EnglishDescription]"
+                      name="EnglishDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[ListPrice]"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EnglishProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      name="EnglishDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[EnglishProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[EnglishProductName]"
+                      name="EnglishProductName" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[EnglishDescription]"
+                      dataType="wstr"
+                      length="400"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[EnglishDescription]"
+                      name="EnglishDescription" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Producto\Producto 2.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Producto.Paths[Salida de Mezclar 1]"
+              endId="Package\Carga Producto\Carga Producto.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de Mezclar 1"
+              startId="Package\Carga Producto\Mezclar.Outputs[Salida de Mezclar 1]" />
+            <path
+              refId="Package\Carga Producto.Paths[Salida de ordenación]"
+              endId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 1]"
+              name="Salida de ordenación"
+              startId="Package\Carga Producto\Ordenar.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Carga Producto.Paths[Salida de origen de OLE DB]"
+              endId="Package\Carga Producto\Ordenar.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga Producto\Producto 1.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Carga Producto.Paths[Salida de origen de OLE DB1]"
+              endId="Package\Carga Producto\Mezclar.Inputs[Entrada de Mezclar 2]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga Producto\Producto 2.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar tabla"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{F2B357A5-F3C7-4F5A-BCD6-8352F00A0EB1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar tabla"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A0B342B4-C148-4659-8565-A7673430FF93}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Producto" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{C64D9C2D-00FA-4A8D-8485-5DC46F5356C5}"
+      DTS:From="Package\Limpiar tabla"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Carga Producto" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Carga Producto"
+          TopLeft="233,122" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Limpiar tabla"
+          TopLeft="203,34" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="273,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,46"
+              Start="0,0"
+              End="35.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="31.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,23"
+                    Point2="35.5,23"
+                    Point3="35.5,27" />
+                  <mssgle:LineSegment
+                    End="35.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Producto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Carga Producto\Producto 1"
+          TopLeft="103,9" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Carga Producto\Producto 2"
+          TopLeft="373,12" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Carga Producto\Mezclar"
+          TopLeft="230,151" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Carga Producto\Ordenar"
+          TopLeft="115,68" />
+        <EdgeLayout
+          Id="Package\Carga Producto.Paths[Salida de origen de OLE DB]"
+          TopLeft="103,30">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,59"
+              Start="0,0"
+              End="4.5,59">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,55" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,55"
+                    Point2="-22.5,59"
+                    Point3="-18.5,59" />
+                  <mssgle:LineSegment
+                    End="4.5,59" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Producto.Paths[Salida de ordenación]"
+          TopLeft="173.5,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="113.5,41"
+              Start="0,0"
+              End="113.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="109.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="109.5,20.5"
+                    Point2="113.5,20.5"
+                    Point3="113.5,24.5" />
+                  <mssgle:LineSegment
+                    End="113.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Producto.Paths[Salida de origen de OLE DB1]"
+          TopLeft="438,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-133.333333333333,97"
+              Start="0,0"
+              End="-133.333333333333,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.39446366782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.39446366782"
+                    Point2="0,57.39446366782"
+                    Point3="-4,57.39446366782" />
+                  <mssgle:LineSegment
+                    End="-129.333333333333,57.39446366782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-129.333333333333,57.39446366782"
+                    Point2="-133.333333333333,57.39446366782"
+                    Point3="-133.333333333333,61.39446366782" />
+                  <mssgle:LineSegment
+                    End="-133.333333333333,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Carga Producto\Carga Producto"
+          TopLeft="214,243" />
+        <EdgeLayout
+          Id="Package\Carga Producto.Paths[Salida de Mezclar 1]"
+          TopLeft="288.25,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Producto\Producto 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Producto\Producto 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Producto\Carga Producto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
